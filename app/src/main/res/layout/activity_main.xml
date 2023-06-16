@@ -1,18 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello World!"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/Margin_top_50dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tittle_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="@dimen/Margin_top_50dp"
+        android:text="@string/tittle_sign_in"
+        android:textColor="@color/Dark_blue_light"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/textField_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="@dimen/Margin_top_50dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/Dark_blue"
+        android:hint="@string/user_hint"
+        android:textColorHint="@color/Dark_blue"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/Dark_blue"
+        app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintBottom_toTopOf="@id/textField_pass"
+        app:layout_constraintTop_toBottomOf="@+id/tittle_sign_in"
+        app:startIconDrawable="@drawable/baseline_account_box_24"
+        app:startIconTint="@color/Dark_blue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Dark_blue"
+            android:textColorHint="@color/Dark_blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_pass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/Dark_blue"
+        android:hint="@string/pass_hint"
+        android:textColorHint="@color/Dark_blue"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/Dark_blue"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/Dark_blue"
+        app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintTop_toBottomOf="@+id/textField_name"
+        app:layout_constraintStart_toStartOf="@id/textField_name"
+        app:layout_constraintEnd_toEndOf="@id/textField_name"
+        app:startIconDrawable="@drawable/baseline_https_24"
+        app:startIconTint="@color/Dark_blue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@color/Dark_blue"
+            android:textColorHint="@color/Dark_blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_login"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/Dark_blue_light"
+        android:text="@string/Button_sign_in"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/textField_pass"
+        app:layout_constraintStart_toStartOf="@+id/textField_pass"
+        app:layout_constraintTop_toBottomOf="@id/textField_pass" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_home"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/white"
+        android:text="pagina principal"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/Dark_blue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/textField_pass"
+        app:layout_constraintStart_toStartOf="@+id/textField_pass"
+        app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+    <TextView
+        android:id="@+id/tv_registrarse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="@string/aun_no_tienes_cuenta"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/btn_register"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+    <Button
+        android:id="@+id/btn_register"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/singn_up_button"
+        android:textAllCaps="false"
+        android:textColor="@color/Dark_blue_light"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/btn_login"
+        app:layout_constraintStart_toEndOf="@+id/tv_registrarse"
+        app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
