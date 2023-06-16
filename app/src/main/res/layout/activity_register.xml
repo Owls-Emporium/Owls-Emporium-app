@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/Margin_top_50dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tittle_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/Register_title"
+        android:textColor="@color/Dark_blue_light"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/textField_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="210dp"
+        android:backgroundTint="@color/Dark_blue"
+        android:hint="Nombre"
+        android:textColorHint="@color/Dark_blue"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/Dark_blue"
+        app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintTop_toBottomOf="@+id/tittle_sign_up"
+        app:startIconDrawable="@drawable/baseline_account_box_24"
+        app:startIconTint="@color/Dark_blue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInput_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Dark_blue"
+            android:textColorHint="@color/Dark_blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_last_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="210dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/Dark_blue"
+        android:hint="Apellido"
+        app:layout_constraintStart_toEndOf="@+id/textField_name"
+        app:layout_constraintTop_toBottomOf="@id/tittle_sign_up"
+        android:textColorHint="@color/Dark_blue"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/Dark_blue"
+        app:hintTextColor="@color/Dark_blue_light"
+        app:startIconTint="@color/Dark_blue"
+        app:startIconDrawable="@drawable/baseline_account_box_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInput_last_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Dark_blue"
+            android:textColorHint="@color/Dark_blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/Dark_blue"
+        android:hint="Correo electronico"
+        android:textColorHint="@color/Dark_blue"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/Dark_blue"
+        app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintTop_toBottomOf="@+id/textField_name"
+        app:startIconDrawable="@drawable/baseline_email_24"
+        app:startIconTint="@color/Dark_blue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInput_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Dark_blue"
+            android:textColorHint="@color/Dark_blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_pass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/Dark_blue"
+        android:hint="@string/pass_hint"
+        android:textColorHint="@color/Dark_blue"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/Dark_blue"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/Dark_blue"
+        app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintTop_toBottomOf="@+id/textField_email"
+        app:startIconDrawable="@drawable/baseline_https_24"
+        app:startIconTint="@color/Dark_blue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInput_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@color/Dark_blue"
+            android:textColorHint="@color/Dark_blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_confirm_pass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/Dark_blue"
+        android:hint="Confirmar contraseña"
+        android:textColorHint="@color/Dark_blue"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/Dark_blue"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/Dark_blue"
+        app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintTop_toBottomOf="@+id/textField_pass"
+        app:startIconDrawable="@drawable/baseline_https_24"
+        app:startIconTint="@color/Dark_blue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInput_confirm_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@color/Dark_blue"
+            android:textColorHint="@color/Dark_blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/register_button"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/Dark_blue_light"
+        android:text="Registrarse"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/textField_confirm_pass"
+        app:layout_constraintStart_toStartOf="@+id/textField_confirm_pass"
+        app:layout_constraintTop_toBottomOf="@id/textField_confirm_pass" />
+
+    <TextView
+        android:id="@+id/tv_registrarse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="¿Ya tienes una cuenta?"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/register_button"
+        app:layout_constraintStart_toStartOf="@id/register_button"
+        app:layout_constraintEnd_toStartOf="@id/btn_login"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="Iniciar sesión"
+        android:textAllCaps="false"
+        android:textColor="@color/Dark_blue_light"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/register_button"
+        app:layout_constraintStart_toEndOf="@+id/tv_registrarse"
+        app:layout_constraintTop_toBottomOf="@id/register_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
