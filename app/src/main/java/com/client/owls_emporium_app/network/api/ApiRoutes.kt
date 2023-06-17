@@ -1,0 +1,14 @@
+package com.client.owls_emporium_app.network.api
+
+import com.client.owls_emporium_app.network.routes.UsersRoutes
+//192.168.1.21
+class ApiRoutes {
+
+    val API_URL = "http://192.168.1.21:3001/api/"
+    val retrofit = Retrofitclient()
+
+    fun getUsersRoutes(): UsersRoutes {
+        return retrofit.getClient(API_URL).create(UsersRoutes::class.java)
+    }
+
+}
