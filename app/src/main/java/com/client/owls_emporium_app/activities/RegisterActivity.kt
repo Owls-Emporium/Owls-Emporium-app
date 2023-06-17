@@ -113,16 +113,15 @@ class RegisterActivity : AppCompatActivity() {
             return false
         }
         if (confirmPassword.isBlank()){
-            Toast.makeText(this,"Debes confirmar la contraseña",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Debes confirmar la contraseña, las contraseñas no coinciden",Toast.LENGTH_SHORT).show()
             return false
         }
-        //implementar cuando el email no es valido
         /*
         if(!email.isEmailValid()){
             Toast.makeText(this,"El email no es valido",Toast.LENGTH_SHORT).show()
             return false
-        }
-        */
+        }*/
+
         if (password != confirmPassword){
             Toast.makeText(this,"Las contraseñas no coinciden",Toast.LENGTH_SHORT).show()
             return false
