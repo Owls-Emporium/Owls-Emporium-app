@@ -3,6 +3,8 @@ package com.client.owls_emporium_app.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.BoringLayout
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -36,10 +38,33 @@ class MainActivity : AppCompatActivity() {
         val email = inputEmail?.text.toString()
         val password = inputPassword?.text.toString()
 
-        Toast.makeText(this, "El email es: ${email}", Toast.LENGTH_LONG).show()
-        Toast.makeText(this, "La contraseña es: ${password}", Toast.LENGTH_LONG).show()
+        if (isValidForm(email,password)){
+            Toast.makeText(this, "El formulario es valido", Toast.LENGTH_LONG).show()
+        }
+        else{
+            Toast.makeText(this, "No es valido", Toast.LENGTH_LONG).show()
+        }
     }
-
+    //validar que sea un correo @gmail.com
+    fun String.isEmailValid(): Boolean{
+        return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    }
+    //validando datos
+    private fun isValidForm(email: String, password: String): Boolean{
+        if (email.isBlank()){
+            Toast.makeText(this,"Ingresa el correo",Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (password.isBlank()){
+            Toast.makeText(this,"Ingresa la contraseña",Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if(email.isEmailValid()){
+            Toast.makeText(this,"EL correo ingresado no es valido, verificar",Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
     private fun goToRegister() {
         val i = Intent(this, RegisterActivity::class.java)
         startActivity(i)
