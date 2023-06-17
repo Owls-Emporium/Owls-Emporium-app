@@ -10,7 +10,10 @@ import android.widget.EditText
 import android.widget.Toast
 import com.client.owls_emporium_app.R
 import com.client.owls_emporium_app.network.models.ResponseHttp
+import com.client.owls_emporium_app.network.models.User
 import com.client.owls_emporium_app.network.providers.UsersProvider
+import com.client.owls_emporium_app.network.utils.SharedPref
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,9 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     var btn_register: Button? = null
     var btn_home: Button? = null
+    var buttonLogin: Button ?= null
+    //extrayendo datos del xml
     var inputEmail: EditText ?= null
     var inputPassword: EditText ?= null
-    var buttonLogin: Button ?= null
     var usersProvider = UsersProvider()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +40,11 @@ class MainActivity : AppCompatActivity() {
         //for login
         inputEmail = findViewById(R.id.input_user)
         inputPassword = findViewById(R.id.input_pass)
+        //go to home aunthentificate
         buttonLogin = findViewById(R.id.btn_login)
         buttonLogin?.setOnClickListener{ login()}
+        //para cuando el usuario ya esta autentificado
+        getUserFromSession()
     }
     //capturando datos que el usuario ingresa
     private fun login(){
@@ -54,6 +61,10 @@ class MainActivity : AppCompatActivity() {
 
                     if(response.body()?.isSuccess == true){
                         Toast.makeText(this@MainActivity, response.body()?.message, Toast.LENGTH_LONG).show()
+                        //para almacenar la session
+                        saveUserInSession(response.body()?.data.toString())
+                        //para navegar luego de verificarte
+                        goToMainPage()
                     }
                     else{
                         Toast.makeText(this@MainActivity, "contraseña o usuario incorrecto", Toast.LENGTH_LONG).show()
@@ -72,9 +83,28 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    //para mantener la sesion del usuario(almacena datos en sesion)
+    private fun saveUserInSession(data: String){
+        val sharePref = SharedPref(this)
+        val gson =Gson()
+        val user = gson.fromJson(data,User::class.java)
+        sharePref.save("user",user)
+    }
     //validar que sea un correo @gmail.com
     fun String.isEmailValid(): Boolean{
         return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    }
+    //para cuando el usuario ya se aya logeado, lo envie a la home
+    private fun getUserFromSession(){
+
+        val sharedPref =SharedPref(this)
+        val gson =Gson()
+
+        if(!sharedPref.getData("user").isNullOrBlank()){
+            //si el usuario exite en sesion
+            val user = gson.fromJson(sharedPref.getData("user"), User::class.java)
+            goToMainPage()
+        }
     }
     //validando datos
     private fun isValidForm(email: String, password: String): Boolean{
