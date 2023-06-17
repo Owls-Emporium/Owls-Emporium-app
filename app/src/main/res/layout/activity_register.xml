@@ -11,7 +11,7 @@
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/Margin_top_50dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/Margin_start_50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:text="@string/Register_title"
         android:textColor="@color/Dark_blue_light"
         android:textSize="35sp"
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/Margin_start_50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="210dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Nombre"
@@ -53,7 +53,7 @@
         app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInput_name"
+            android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/Dark_blue"
@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="210dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Apellido"
@@ -83,7 +83,7 @@
         app:startIconDrawable="@drawable/baseline_account_box_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInput_last_name"
+            android:id="@+id/input_lastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/Dark_blue"
@@ -112,7 +112,38 @@
         app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInput_email"
+            android:id="@+id/input_email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Dark_blue"
+            android:textColorHint="@color/Dark_blue" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_phone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/Dark_blue"
+        android:hint="Teléfono"
+        android:textColorHint="@color/Dark_blue"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/Dark_blue"
+        app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintTop_toBottomOf="@+id/textField_email"
+        app:startIconDrawable="@drawable/baseline_phone_24"
+        app:startIconTint="@color/Dark_blue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_phone"
+            android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/Dark_blue"
@@ -138,12 +169,12 @@
         app:endIconMode="password_toggle"
         app:endIconTint="@color/Dark_blue"
         app:hintTextColor="@color/Dark_blue_light"
-        app:layout_constraintTop_toBottomOf="@+id/textField_email"
+        app:layout_constraintTop_toBottomOf="@+id/textField_phone"
         app:startIconDrawable="@drawable/baseline_https_24"
         app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInput_pass"
+            android:id="@+id/input_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -175,7 +206,7 @@
         app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInput_confirm_pass"
+            android:id="@+id/input_confirm_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -203,7 +234,7 @@
         android:id="@+id/tv_registrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="¿Ya tienes una cuenta?"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -216,7 +247,7 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="7dp"
         android:text="Iniciar sesión"
         android:textAllCaps="false"
         android:textColor="@color/Dark_blue_light"
