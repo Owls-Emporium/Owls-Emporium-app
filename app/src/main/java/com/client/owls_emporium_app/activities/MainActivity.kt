@@ -3,12 +3,17 @@ package com.client.owls_emporium_app.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.BoringLayout
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.client.owls_emporium_app.R
+import com.client.owls_emporium_app.network.models.ResponseHttp
+import com.client.owls_emporium_app.network.providers.UsersProvider
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     var inputEmail: EditText ?= null
     var inputPassword: EditText ?= null
     var buttonLogin: Button ?= null
+    var usersProvider = UsersProvider()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +45,32 @@ class MainActivity : AppCompatActivity() {
         val password = inputPassword?.text.toString()
 
         if (isValidForm(email,password)){
-            Toast.makeText(this, "El formulario es valido", Toast.LENGTH_LONG).show()
+            usersProvider.login(email,password)?.enqueue(object: Callback<ResponseHttp>{
+                override fun onResponse(
+                    call: Call<ResponseHttp>,
+                    response: Response<ResponseHttp>
+                ) {
+                    Log.d("MainActivity", "Response: ${response.body()}")
+
+                    if(response.body()?.isSuccess == true){
+                        Toast.makeText(this@MainActivity, response.body()?.message, Toast.LENGTH_LONG).show()
+                    }
+                    else{
+                        Toast.makeText(this@MainActivity, "contraseña o usuario incorrecto", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseHttp>, t: Throwable) {
+                    Log.d("MainActivity","Hubo un error ${t.message}")
+                    Toast.makeText(this@MainActivity, " ${t.message}", Toast.LENGTH_LONG).show()
+                }
+
+            } )
         }
         else{
             Toast.makeText(this, "No es valido", Toast.LENGTH_LONG).show()
         }
+
     }
     //validar que sea un correo @gmail.com
     fun String.isEmailValid(): Boolean{
@@ -59,10 +86,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"Ingresa la contraseña",Toast.LENGTH_SHORT).show()
             return false
         }
+        /*
         if(email.isEmailValid()){
             Toast.makeText(this,"EL correo ingresado no es valido, verificar",Toast.LENGTH_SHORT).show()
             return false
-        }
+        }*/
         return true
     }
     private fun goToRegister() {
