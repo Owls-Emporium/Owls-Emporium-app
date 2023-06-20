@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this@MainActivity, response.body()?.message, Toast.LENGTH_LONG).show()
                         //para almacenar la session
                         saveUserInSession(response.body()?.data.toString())
-                        //para navegar luego de verificarte
                         goToMainPage()
                     }
                     else{
@@ -89,6 +88,15 @@ class MainActivity : AppCompatActivity() {
         val gson =Gson()
         val user = gson.fromJson(data,User::class.java)
         sharePref.save("user",user)
+
+        //aqui es cuando inicias sesion, te pregunte con que rol
+        /*if(user.roles?.size !!> 1){ //si el usuario tiene mas de un rol
+            //aqui pones que envie a la pantalla para seleccionar rol
+            goToMainPage()
+        }
+        else{ //el usuario solo tiene un rol
+            goToMainPage()
+        }*/
     }
     //validar que sea un correo @gmail.com
     fun String.isEmailValid(): Boolean{
