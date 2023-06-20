@@ -11,6 +11,8 @@ import com.client.owls_emporium_app.R
 import com.client.owls_emporium_app.network.models.ResponseHttp
 import com.client.owls_emporium_app.network.models.User
 import com.client.owls_emporium_app.network.providers.UsersProvider
+import com.client.owls_emporium_app.network.utils.SharedPref
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -70,7 +72,10 @@ class RegisterActivity : AppCompatActivity() {
                     call: Call<ResponseHttp>,
                     response: Response<ResponseHttp>
                 ) {
-
+                    if (response.body()?.isSuccess == true){
+                        saveUserInSession(response.body()?.data.toString())
+                        goToMainPage()
+                    }
                     Toast.makeText(this@RegisterActivity,response.body()?.message,Toast.LENGTH_LONG).show()
                     Log.d(TAG,"Response: ${response}")
                     Log.d(TAG,"Body: ${response.body()}")
@@ -83,7 +88,17 @@ class RegisterActivity : AppCompatActivity() {
             })
         }
     }
-
+    private fun goToMainPage() {
+        val i = Intent(this, MainPageActivity::class.java)
+        startActivity(i)
+    }
+    //para mantener la sesion del usuario(almacena datos en sesion)
+    private fun saveUserInSession(data: String){
+        val sharePref = SharedPref(this)
+        val gson = Gson()
+        val user = gson.fromJson(data,User::class.java)
+        sharePref.save("user",user)
+    }
     private fun isValidForm(
         name: String,
         lastname: String,
