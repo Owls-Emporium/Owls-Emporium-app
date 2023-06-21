@@ -7,18 +7,12 @@
     android:fitsSystemWindows="true"
     tools:context=".activities.MainPageActivity">
 
+
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="boton de salida, modificalo, asignalo donde tiene que estar, solo manteneme el mismo id"
-            android:layout_gravity="center"
-            />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/btn_navigation"
