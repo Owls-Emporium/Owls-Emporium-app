@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.client.owls_emporium_app.R
+import com.client.owls_emporium_app.fragments.CategoryFragment
 import com.client.owls_emporium_app.fragments.MainPageFragment
 import com.client.owls_emporium_app.fragments.NewProductFragment
 import com.client.owls_emporium_app.fragments.ProfileFragment
@@ -38,6 +39,11 @@ class MainPageActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.item_home -> {
                     openFragment(MainPageFragment())
+                    true
+                }
+
+                R.id.item_category -> {
+                    openFragment(CategoryFragment())
                     true
                 }
 
