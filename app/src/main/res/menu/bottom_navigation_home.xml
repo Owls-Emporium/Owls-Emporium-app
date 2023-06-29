@@ -6,8 +6,18 @@
         android:title=""
         />
 
+    <item android:id="@+id/item_category"
+        android:icon="@drawable/outline_category_24"
+        android:title=""
+        />
+
     <item android:id="@+id/item_new_post"
         android:icon="@drawable/outline_add_box_24"
+        android:title=""
+        />
+
+    <item android:id="@+id/item_post"
+        android:icon="@drawable/outline_bookmark_border_24"
         android:title=""
         />
 
@@ -15,5 +25,7 @@
         android:icon="@drawable/outline_account_box_24"
         android:title=""
         />
+
+
 
 </menu>
