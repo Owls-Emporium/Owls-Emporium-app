@@ -1,5 +1,6 @@
 package com.client.owls_emporium_app.network.models
 
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
 class User (
@@ -15,5 +16,9 @@ class User (
         ){
     override fun toString(): String {
         return "User(id='$id', name='$name', lastname='$lastname', email='$email', phone='$phone', password='$password', image='$image', sessionToken=$sessionToken, roles=$roles )"
+    }
+
+    fun toJson(): String {
+        return Gson().toJson(this)
     }
 }
