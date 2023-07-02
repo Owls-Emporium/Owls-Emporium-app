@@ -52,6 +52,7 @@ class MainPageActivity : AppCompatActivity() {
                     true
                 }
 
+
                 R.id.item_profile -> {
                     openFragment(ProfileFragment())
                     true
