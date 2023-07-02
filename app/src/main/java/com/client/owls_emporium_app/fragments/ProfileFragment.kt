@@ -7,37 +7,60 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import com.client.owls_emporium_app.R
-import com.client.owls_emporium_app.activities.UpdateProfileActivity
+import com.bumptech.glide.Glide
+import com.client.owls_emporium_app.network.models.User
+import com.client.owls_emporium_app.network.utils.SharedPref
+import com.google.gson.Gson
+import de.hdodenhof.circleimageview.CircleImageView
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
 
+    var myview: View ?= null
+    var buttonUpdateProfile: Button ?= null
+    var circleImageUser: CircleImageView?= null
+    var textViewName: TextView?= null
+    var textViewEmail: TextView ?= null
+    var textViewPhone: TextView ?= null
 
+    var sharedPref: SharedPref ?= null
+    var user: User?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-        val boton = view?.findViewById<Button>(R.id.btn_update_profile)
+        myview = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        //configuranod el click listener del boton
-        boton?.setOnClickListener {
-            // Aquí se llama al Activity
-            val intent = Intent(activity, UpdateProfileActivity::class.java)
-            startActivity(intent)
-        }
+        sharedPref = SharedPref(requireActivity())
 
-        return view
+        buttonUpdateProfile = myview?.findViewById(R.id.btn_update_profile)
+        textViewName = myview?.findViewById(R.id.textview_name1)
+        textViewEmail = myview?.findViewById(R.id.textview_email1)
+        textViewPhone = myview?.findViewById(R.id.textview_phone1)
+        circleImageUser = myview?.findViewById(R.id.circleimage_user)
 
+        getUserFromSession()
+
+        textViewName?.text = "${user?.name} ${user?.lastname}"
+        textViewEmail?.text = user?.email
+        textViewPhone?.text = user?.phone
+        Glide.with(requireContext()).load(user?.image).into(circleImageUser!!)
+
+
+        return myview
     }
 
+    //obtiene los datos de session
+    private fun getUserFromSession() {
+        val gson = Gson()
 
+        if(!sharedPref?.getData("user").isNullOrBlank()){
+            //si exite el usuario en sesion
+
+        }
+    }
 
 }

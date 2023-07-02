@@ -37,6 +37,7 @@
             />
 
         <TextView
+            android:id="@+id/textview_name1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre de usuario"
@@ -64,6 +65,7 @@
             />
 
         <TextView
+            android:id="@+id/textview_email1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Correo electronico"
@@ -91,6 +93,7 @@
             />
 
         <TextView
+            android:id="@+id/textview_phone1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+503 0000-0000"
