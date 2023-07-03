@@ -70,7 +70,7 @@ class ProfileFragment : Fragment() {
 
         if(!sharedPref?.getData("user").isNullOrBlank()){
             //si exite el usuario en sesion
-
+            user = gson.fromJson(sharedPref?.getData("user"), User::class.java)
         }
     }
 
