@@ -8,6 +8,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -27,6 +28,13 @@ interface UsersRoutes {
     @PUT("user/update")
     fun update(
         @Part image: MultipartBody.Part,
-        @Part("user") user: RequestBody
+        @Part("user") user: RequestBody,
+        @Header("Authorization") token: String
+    ):Call<ResponseHttp>
+
+    @PUT("user/updateWithoutImage")
+    fun updateWithoutImage(
+        @Body user: User,
+        @Header("Authorization") token: String
     ):Call<ResponseHttp>
 }

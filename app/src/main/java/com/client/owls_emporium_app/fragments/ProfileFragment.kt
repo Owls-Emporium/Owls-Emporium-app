@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.client.owls_emporium_app.R
 import com.bumptech.glide.Glide
 import com.client.owls_emporium_app.activities.MainActivity
+import com.client.owls_emporium_app.activities.UpdateProfileActivity
 import com.client.owls_emporium_app.network.models.User
 import com.client.owls_emporium_app.network.utils.SharedPref
 import com.google.gson.Gson
@@ -44,6 +45,7 @@ class ProfileFragment : Fragment() {
         buttonLogout = myview?.findViewById(R.id.btn_logout)
 
         buttonLogout?.setOnClickListener{ logout() }
+        buttonUpdateProfile?.setOnClickListener{ goToUpdate() }
 
         getUserFromSession()
 
@@ -74,4 +76,8 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private fun goToUpdate() {
+        val i = Intent(requireContext(), UpdateProfileActivity::class.java)
+        startActivity(i)
+    }
 }
