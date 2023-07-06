@@ -1,60 +1,83 @@
 package com.client.owls_emporium_app.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.client.owls_emporium_app.R
+import com.client.owls_emporium_app.network.adapters.CategoriesAdapter
+import com.client.owls_emporium_app.network.models.Category
+import com.client.owls_emporium_app.network.models.User
+import com.client.owls_emporium_app.network.providers.CategoriesProviders
+import com.client.owls_emporium_app.network.utils.SharedPref
+import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CategoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CategoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    val  TAG = "CategoriesFragment"
+    var myView: View? = null
+    var recyclerViewCategories: RecyclerView? = null
+    var categoriesProvider: CategoriesProviders? = null
+    var adapter: CategoriesAdapter? = null
+    var user: User? = null
+    var sharedPref: SharedPref? = null
+    var categories = ArrayList<Category>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false)
+        myView = inflater.inflate(R.layout.fragment_category, container, false)
+
+        recyclerViewCategories = myView?.findViewById(R.id.recyclerview_category)
+        recyclerViewCategories?.layoutManager = LinearLayoutManager(requireContext()) // Elementos se mostraran de manera vertical
+        sharedPref = SharedPref(requireActivity())
+
+        getUserFromSession()
+
+        categoriesProvider = CategoriesProviders(user?.sessionToken!!)
+
+        getCategories()
+
+    return myView
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CategoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CategoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun getCategories() {
+        categoriesProvider?.getAll()?.enqueue(object: Callback<ArrayList<Category>> {
+            override fun onResponse(call: Call<ArrayList<Category>>, response: Response<ArrayList<Category>>
+            ) {
+                if (response.body() != null) {
+                    categories = response.body()!!
+                    adapter = CategoriesAdapter(requireActivity(), categories)
+                    recyclerViewCategories?.adapter = adapter
                 }
             }
+
+            override fun onFailure(call: Call<ArrayList<Category>>, t: Throwable) {
+                Log.d(TAG, " Error: ${t.message}")
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+
+        })
     }
+
+    private fun getUserFromSession() {
+        val gson = Gson()
+
+        if(!sharedPref?.getData("user").isNullOrBlank()){
+            //si exite el usuario en sesion
+            user = gson.fromJson(sharedPref?.getData("user"), User::class.java)
+        }
+    }
+
 }
+
