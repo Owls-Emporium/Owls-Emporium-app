@@ -25,14 +25,14 @@ interface UsersRoutes {
 
     //nos permite actualizar datos
     @Multipart
-    @PUT("user/update")
+    @PUT("users/update")
     fun update(
         @Part image: MultipartBody.Part,
         @Part("user") user: RequestBody,
         @Header("Authorization") token: String
     ):Call<ResponseHttp>
 
-    @PUT("user/updateWithoutImage")
+    @PUT("users/updateWithoutImage")
     fun updateWithoutImage(
         @Body user: User,
         @Header("Authorization") token: String
