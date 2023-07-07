@@ -28,6 +28,7 @@ import com.client.owls_emporium_app.network.providers.ProductsProvider
 import com.client.owls_emporium_app.network.utils.SharedPref
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.gson.Gson
+import com.tommasoberlose.progressdialog.ProgressDialogFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -71,7 +72,7 @@ class NewProductFragment : Fragment() {
         // Inflate the layout for this fragment
         myView = inflater.inflate(R.layout.fragment_new_product, container, false)
 
-        editTextName = myView?.findViewById(R.id.input_name)
+        editTextName = myView?.findViewById(R.id.input_title)
         editTextDescription = myView?.findViewById(R.id.input_description)
         editTextPrice = myView?.findViewById(R.id.input_price)
         imageViewProduct1 = myView?.findViewById(R.id.imageview_1)
@@ -205,17 +206,23 @@ class NewProductFragment : Fragment() {
             files.add(imageFile2!!)
             files.add(imageFile3!!)
 
-
+            ProgressDialogFragment.showProgressBar(requireActivity())
 
             productsProvider?.create(files, product)?.enqueue(object: Callback<ResponseHttp> {
                 override fun onResponse(call: Call<ResponseHttp>, response: Response<ResponseHttp>) {
-
+                    ProgressDialogFragment.hideProgressBar(requireActivity())
                     Log.d(TAG, "Response: $response")
                     Log.d(TAG, "Body: ${response.body()}")
                     Toast.makeText(requireContext(), response.body()?.message, Toast.LENGTH_SHORT).show()
+
+                    if (response.body()?.isSuccess == true){
+                        resetForm()
+                    }
                 }
 
                 override fun onFailure(call: Call<ResponseHttp>, t: Throwable) {
+                    ProgressDialogFragment.hideProgressBar(requireActivity())
+
                     Log.d(TAG, "Error: ${t.message}")
                     Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_LONG).show()
                 }
@@ -223,6 +230,20 @@ class NewProductFragment : Fragment() {
             })
 
         }
+
+    }
+
+    private fun resetForm(){
+        editTextName?.setText("")
+        editTextDescription?.setText("")
+        editTextPrice?.setText("")
+        imageFile1 = null
+        imageFile2 = null
+        imageFile3 = null
+        imageViewProduct1?.setImageResource(R.drawable.ic_image)
+        imageViewProduct2?.setImageResource(R.drawable.ic_image)
+        imageViewProduct3?.setImageResource(R.drawable.ic_image)
+
 
     }
 
