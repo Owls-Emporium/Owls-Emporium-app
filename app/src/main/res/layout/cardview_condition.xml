@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageview_category"
+            android:id="@+id/imageview_condition"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/ic_image"
@@ -27,7 +27,7 @@
             android:alpha="0.5"/>
 
         <TextView
-            android:id="@+id/textview_category"
+            android:id="@+id/textview_condition"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Categoria"
