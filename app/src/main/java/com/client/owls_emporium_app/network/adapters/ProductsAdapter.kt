@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.client.owls_emporium_app.R
+import com.client.owls_emporium_app.activities.ProductsDetailActivity
+import com.client.owls_emporium_app.activities.ProductsListActivity
 import com.client.owls_emporium_app.network.models.Category
 import com.client.owls_emporium_app.network.models.Product
 import com.client.owls_emporium_app.network.utils.SharedPref
@@ -32,8 +34,17 @@ class ProductsAdapter(val context: Activity, val products: ArrayList<Product>): 
         val product = products[position] // Cada una de los productos
 
         holder.textViewName.text = product.name
-        holder.textViewPrice.text = "${product.price}$"
+        holder.textViewPrice.text = "$ ${product.price}"
         Glide.with(context).load(product.image1).into(holder.imageViewProduct)
+
+        holder.itemView.setOnClickListener {goToDetail(product)}
+    }
+
+    private fun goToDetail(product: Product){
+
+        val i = Intent(context, ProductsDetailActivity::class.java)
+        i.putExtra("product", product.toJson())
+        context.startActivity(i)
     }
 
     class ProductsViewHolder(view: View): RecyclerView.ViewHolder(view) {

@@ -46,6 +46,7 @@ class NewProductFragment : Fragment() {
     var imageViewProduct2: ImageView? = null
     var imageViewProduct3: ImageView? = null
     var buttonCreate: Button? = null
+    var buttonDelete: Button? = null
     var spinnerCategories: Spinner? = null
     var spinnerCondition: Spinner? = null
 
@@ -79,11 +80,13 @@ class NewProductFragment : Fragment() {
         imageViewProduct2 = myView?.findViewById(R.id.imageview_2)
         imageViewProduct3 = myView?.findViewById(R.id.imageview_3)
         buttonCreate = myView?.findViewById(R.id.btn_publicarPost)
+        buttonDelete = myView?.findViewById(R.id.button_descartarPost)
         spinnerCategories = myView?.findViewById(R.id.spinner_tags)
         spinnerCondition = myView?.findViewById(R.id.spinner_status)
 
 
         buttonCreate?.setOnClickListener { createProduct() }
+        buttonDelete?.setOnClickListener { resetForm() }
         imageViewProduct1?.setOnClickListener { selectImage(101) }
         imageViewProduct2?.setOnClickListener { selectImage(102) }
         imageViewProduct3?.setOnClickListener { selectImage(103) }
