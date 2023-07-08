@@ -7,7 +7,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.client.owls_emporium_app.R
-import com.client.owls_emporium_app.fragments.CategoryFragment
 import com.client.owls_emporium_app.fragments.MainPageFragment
 import com.client.owls_emporium_app.fragments.NewProductFragment
 import com.client.owls_emporium_app.fragments.ProfileFragment
@@ -28,7 +27,6 @@ class MainPageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_page)
 
         sharedPref = SharedPref(this)
-        buttonLogout = findViewById(R.id.btn_logout)
         buttonLogout?.setOnClickListener{ logout() }
         getUserFromSession()
 
@@ -42,10 +40,6 @@ class MainPageActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.item_category -> {
-                    openFragment(CategoryFragment())
-                    true
-                }
 
                 R.id.item_new_post -> {
                     openFragment(NewProductFragment())
