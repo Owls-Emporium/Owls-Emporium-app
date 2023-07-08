@@ -25,7 +25,7 @@ interface ProductsRoutes {
     //   @Header("Authorization") token: String
   // ): Call<ArrayList<Product>>
 
-    @GET("products/findByCategory/{id_category}")
+    @GET("products/finByCategory/{id_category}")
     fun findByCategory(
         @Path("id_category") idCategory: String,
         @Header("Authorization") token: String
