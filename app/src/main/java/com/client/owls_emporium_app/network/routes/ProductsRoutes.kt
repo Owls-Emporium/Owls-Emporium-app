@@ -15,6 +15,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
+import retrofit2.http.Path
 import java.util.Locale.Category
 
 interface ProductsRoutes {
@@ -23,6 +24,13 @@ interface ProductsRoutes {
   //fun getAll(
     //   @Header("Authorization") token: String
   // ): Call<ArrayList<Product>>
+
+    @GET("products/findByCategory/{id_category}")
+    fun findByCategory(
+        @Path("id_category") idCategory: String,
+        @Header("Authorization") token: String
+    ): Call<ArrayList<Product>>
+
 
     @Multipart
     @POST("products/create")
