@@ -1,6 +1,7 @@
 package com.client.owls_emporium_app.network.adapters
 
 import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.client.owls_emporium_app.R
+import com.client.owls_emporium_app.activities.ProductsListActivity
 import com.client.owls_emporium_app.network.models.Category
 import com.client.owls_emporium_app.network.utils.SharedPref
 
@@ -31,6 +33,15 @@ class CategoriesAdapter(val context: Activity, val categories: ArrayList<Categor
 
         holder.textViewCategory.text = category.name
         Glide.with(context).load(category.image).into(holder.imageViewCategory)
+
+        holder.itemView.setOnClickListener{ goToProducts(category)}
+
+    }
+
+    private fun goToProducts(category:Category){
+        val i = Intent(context, ProductsListActivity::class.java)
+        i.putExtra("idCategory", category.id)
+        context.startActivity(i)
     }
 
     class CategoriesViewHolder(view: View): RecyclerView.ViewHolder(view) {
