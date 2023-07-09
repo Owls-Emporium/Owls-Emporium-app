@@ -21,11 +21,13 @@ class ProductsDetailActivity : AppCompatActivity() {
     val TAG = "ProductsDetail"
     var product: Product? = null
     val gson = Gson()
-
+    //creando variables para almacer el valor de respuesta
     var imageSlider: ImageSlider? = null
     var textViewName: TextView? = null
     var textViewDescription: TextView? = null
     var textViewPrice: TextView? = null
+    var textViewCategory: TextView? = null
+    var textViewStatus: TextView? = null
 
     var buttonAdd: Button? = null
 
@@ -39,14 +41,16 @@ class ProductsDetailActivity : AppCompatActivity() {
 
         product = gson.fromJson(intent.getStringExtra("product"), Product::class.java)
         sharedPref = SharedPref(this)
-
+        //find cada textview
         imageSlider = findViewById(R.id.imageslider)
         textViewName = findViewById(R.id.textview_name)
         textViewDescription = findViewById(R.id.textview_description)
         textViewPrice = findViewById(R.id.textview_price)
+        textViewCategory = findViewById(R.id.textview_category)
+        textViewStatus = findViewById(R.id.textview_status)
 
         buttonAdd = findViewById(R.id.btn_add_product)
-
+        //arreglo de las imagenes para que se muestren
         val imageList = ArrayList<SlideModel>()
         imageList.add(SlideModel(product?.image1, ScaleTypes.CENTER_CROP))
         imageList.add(SlideModel(product?.image2, ScaleTypes.CENTER_CROP))
@@ -57,6 +61,8 @@ class ProductsDetailActivity : AppCompatActivity() {
         textViewName?.text = product?.name
         textViewDescription?.text = product?.description
         textViewPrice?.text = "$ ${product?.price}"
+        textViewCategory?.text = product?.idCategory
+        textViewStatus?.text = "Estado ${product?.idStatus}"
 
         buttonAdd?.setOnClickListener { addToBag() }
 
