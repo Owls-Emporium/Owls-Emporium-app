@@ -1,5 +1,6 @@
 package com.client.owls_emporium_app.activities
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.client.owls_emporium_app.R
 import com.client.owls_emporium_app.network.models.ResponseHttp
@@ -38,11 +41,20 @@ class UpdateProfileActivity : AppCompatActivity() {
     private var imageFile : File?= null
     var usersProvider: UsersProvider? = null
 
+    var toolbar: Toolbar? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
 
         sharedPref = SharedPref(this)
+
+        toolbar = findViewById(R.id.toolbar)
+        toolbar?.title = "Atras"
+        toolbar?.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         circleImageUser = findViewById(R.id.circleimage_user)
         editTextName = findViewById(R.id.input_name)
@@ -139,7 +151,7 @@ class UpdateProfileActivity : AppCompatActivity() {
     }
 
     private val startImageForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        result: ActivityResult ->
+            result: ActivityResult ->
 
         val resultCode = result.resultCode
         val data = result.data
