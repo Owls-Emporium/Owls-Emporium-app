@@ -18,27 +18,12 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 import java.util.Locale.Category
 
-interface ProductsRoutes {
+interface SuggestRoutes {
 
-    @GET("products/getAll")
-    fun getAll(
-        @Header("Authorization") token: String
-    ): Call<ArrayList<Product>>
+   @GET("products/getAll")
+  fun getAll(
+       @Header("Authorization") token: String
+   ): Call<ArrayList<Product>>
 
-
-    @GET("products/finByCategory/{id_category}")
-    fun findByCategory(
-        @Path("id_category") idCategory: String,
-        @Header("Authorization") token: String
-    ): Call<ArrayList<Product>>
-
-
-    @Multipart
-    @POST("products/create")
-    fun create(
-        @Part images: Array<MultipartBody.Part?>,
-        @Part("product") product: RequestBody,
-        @Header("Authorization") token: String
-    ): Call<ResponseHttp>
 
 }
