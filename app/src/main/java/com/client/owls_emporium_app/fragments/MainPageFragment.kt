@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.client.owls_emporium_app.R
@@ -69,6 +70,14 @@ class MainPageFragment : Fragment() {
 
 
         return myView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerViewProducts = view.findViewById(R.id.recyclerview_products_suggest)
+        recyclerViewProducts?.layoutManager = GridLayoutManager(requireContext(), 2)
+
     }
 
     private fun getCategories() {
