@@ -8,12 +8,14 @@
     tools:context=".activities.UpdateProfileActivity"
     android:backgroundTint="@color/white">
 
+    <include layout="@layout/action_bar" />
+
     <TextView
         android:id="@+id/tittle_edit_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/Margin_start_50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="75dp"
         android:text="Editar perfil"
         android:textColor="@color/Dark_blue_light"
         android:textSize="35sp"

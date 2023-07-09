@@ -35,7 +35,9 @@
             android:exported="false" />
         <activity
             android:name=".activities.UpdateProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.UpdateProfileActivity" />
+
         <activity
             android:name=".activities.MainPageActivity"
             android:exported="false"

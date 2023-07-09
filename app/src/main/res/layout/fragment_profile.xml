@@ -7,6 +7,8 @@
     android:background="@color/white"
     tools:context=".fragments.ProfileFragment">
 
+    <include layout="@layout/action_bar" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleimage_user"
         android:layout_width="150dp"
@@ -18,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="80dp"/>
 
     <LinearLayout
         android:id="@+id/textview_name"
