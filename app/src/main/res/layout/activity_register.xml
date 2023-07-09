@@ -10,19 +10,20 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_marginTop="25dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tittle_sign_up"/>
 
     <TextView
         android:id="@+id/tittle_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/Margin_start_50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/Register_title"
         android:textColor="@color/Dark_blue_light"
         android:textSize="35sp"
@@ -36,8 +37,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/Margin_start_50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="210dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Nombre"
@@ -49,7 +50,10 @@
         app:boxStrokeColor="@color/Dark_blue"
         app:hintTextColor="@color/Dark_blue_light"
         app:layout_constraintTop_toBottomOf="@+id/tittle_sign_up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textField_last_name"
         app:startIconDrawable="@drawable/baseline_account_box_24"
+        app:layout_constraintBottom_toTopOf="@id/textField_email"
         app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -66,12 +70,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="210dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Apellido"
-        app:layout_constraintStart_toEndOf="@+id/textField_name"
-        app:layout_constraintTop_toBottomOf="@id/tittle_sign_up"
         android:textColorHint="@color/Dark_blue"
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusBottomStart="30dp"
@@ -79,8 +82,12 @@
         app:boxCornerRadiusTopStart="30dp"
         app:boxStrokeColor="@color/Dark_blue"
         app:hintTextColor="@color/Dark_blue_light"
-        app:startIconTint="@color/Dark_blue"
-        app:startIconDrawable="@drawable/baseline_account_box_24">
+        app:layout_constraintBottom_toTopOf="@id/textField_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textField_name"
+        app:layout_constraintTop_toBottomOf="@id/tittle_sign_up"
+        app:startIconDrawable="@drawable/baseline_account_box_24"
+        app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_lastname"
@@ -95,9 +102,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Correo electronico"
         android:textColorHint="@color/Dark_blue"
@@ -107,8 +114,11 @@
         app:boxCornerRadiusTopStart="30dp"
         app:boxStrokeColor="@color/Dark_blue"
         app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textField_name"
         app:startIconDrawable="@drawable/baseline_email_24"
+        app:layout_constraintBottom_toTopOf="@+id/textField_phone"
         app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -125,9 +135,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Teléfono"
         android:textColorHint="@color/Dark_blue"
@@ -137,8 +147,11 @@
         app:boxCornerRadiusTopStart="30dp"
         app:boxStrokeColor="@color/Dark_blue"
         app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textField_email"
         app:startIconDrawable="@drawable/baseline_phone_24"
+        app:layout_constraintBottom_toTopOf="@id/textField_pass"
         app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -155,9 +168,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="@string/pass_hint"
         android:textColorHint="@color/Dark_blue"
@@ -169,6 +182,9 @@
         app:endIconMode="password_toggle"
         app:endIconTint="@color/Dark_blue"
         app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintBottom_toTopOf="@id/textField_confirm_pass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textField_phone"
         app:startIconDrawable="@drawable/baseline_https_24"
         app:startIconTint="@color/Dark_blue">
@@ -187,9 +203,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/Margin_start_50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Confirmar contraseña"
         android:textColorHint="@color/Dark_blue"
@@ -201,8 +217,11 @@
         app:endIconMode="password_toggle"
         app:endIconTint="@color/Dark_blue"
         app:hintTextColor="@color/Dark_blue_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textField_pass"
         app:startIconDrawable="@drawable/baseline_https_24"
+        app:layout_constraintBottom_toTopOf="@id/register_button"
         app:startIconTint="@color/Dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -216,7 +235,7 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/register_button"
-        android:layout_width="310dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/Dark_blue_light"
@@ -226,8 +245,8 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/textField_confirm_pass"
-        app:layout_constraintStart_toStartOf="@+id/textField_confirm_pass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textField_confirm_pass" />
 
     <TextView
@@ -255,5 +274,15 @@
         app:layout_constraintEnd_toEndOf="@id/register_button"
         app:layout_constraintStart_toEndOf="@+id/tv_registrarse"
         app:layout_constraintTop_toBottomOf="@id/register_button" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/wave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
