@@ -21,10 +21,12 @@ import com.client.owls_emporium_app.network.models.Category
 import com.client.owls_emporium_app.network.models.Condition
 import com.client.owls_emporium_app.network.models.Product
 import com.client.owls_emporium_app.network.models.ResponseHttp
+import com.client.owls_emporium_app.network.models.Statement
 import com.client.owls_emporium_app.network.models.User
 import com.client.owls_emporium_app.network.providers.CategoriesProviders
 import com.client.owls_emporium_app.network.providers.ConditionProviders
 import com.client.owls_emporium_app.network.providers.ProductsProvider
+import com.client.owls_emporium_app.network.providers.StatementProvider
 import com.client.owls_emporium_app.network.utils.SharedPref
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.gson.Gson
@@ -49,6 +51,7 @@ class NewProductFragment : Fragment() {
     var buttonDelete: Button? = null
     var spinnerCategories: Spinner? = null
     var spinnerCondition: Spinner? = null
+    var spinnerStatement: Spinner? = null
 
 
     var imageFile1: File? = null
@@ -58,12 +61,15 @@ class NewProductFragment : Fragment() {
     var categoriesProvider: CategoriesProviders? = null
     var conditionProvider: ConditionProviders? = null
     var productsProvider: ProductsProvider? = null
+    var statementProvider: StatementProvider? = null
     var user: User? = null
     var sharedPref: SharedPref? = null
     var categories = ArrayList<Category>()
     var idCategory = ""
     var idStatus = ""
+    var idStatement= ""
     var condition= ArrayList<Condition>()
+    var statement= ArrayList<Statement>()
 
 
     override fun onCreateView(
@@ -83,6 +89,7 @@ class NewProductFragment : Fragment() {
         buttonDelete = myView?.findViewById(R.id.button_descartarPost)
         spinnerCategories = myView?.findViewById(R.id.spinner_tags)
         spinnerCondition = myView?.findViewById(R.id.spinner_status)
+        spinnerStatement = myView?.findViewById(R.id.spinner_statement)
 
 
         buttonCreate?.setOnClickListener { createProduct() }
@@ -98,11 +105,12 @@ class NewProductFragment : Fragment() {
         categoriesProvider = CategoriesProviders(user?.sessionToken!!)
         productsProvider = ProductsProvider(user?.sessionToken!!)
         conditionProvider = ConditionProviders(user?.sessionToken!!)
+        statementProvider = StatementProvider(user?.sessionToken!!)
 
 
         getCategories()
         getCondition()
-
+        getStatement()
 
         return myView
     }
@@ -176,6 +184,41 @@ class NewProductFragment : Fragment() {
         })
     }
 
+    private fun getStatement() {
+        statementProvider?.getAll()?.enqueue(object: Callback<ArrayList<Statement>> {
+            override fun onResponse(call: Call<ArrayList<Statement>>, response: Response<ArrayList<Statement>>
+            ) {
+
+                if (response.body() != null) {
+
+                    statement = response.body()!!
+
+                    val arrayAdapter = ArrayAdapter<Statement>(requireActivity(), android.R.layout.simple_dropdown_item_1line, statement)
+
+                    spinnerStatement?.adapter = arrayAdapter
+                    spinnerStatement?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, l: Long) {
+                            idStatement = statement[position].id!!
+                            Log.d(TAG, "Id Statement: $idStatement")
+                        }
+
+                        override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                        }
+
+                    }
+                }
+
+            }
+
+            override fun onFailure(call: Call<ArrayList<Statement>>, t: Throwable) {
+                Log.d(TAG, "Error: ${t.message}")
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
     private fun getUserFromSession() {
 
         val gson = Gson()
@@ -202,7 +245,9 @@ class NewProductFragment : Fragment() {
                 description = description,
                 price = priceText.toDouble(),
                 idCategory = idCategory,
-                idStatus = idStatus
+                idStatus = idStatus,
+                idStatement = idStatement,
+                idUser = user?.id!!
             )
 
             files.add(imageFile1!!)
@@ -284,7 +329,10 @@ class NewProductFragment : Fragment() {
             Toast.makeText(requireContext(), "Selecciona la condicion del producto", Toast.LENGTH_SHORT).show()
             return false
         }
-
+        if (idStatement.isNullOrBlank()) {
+            Toast.makeText(requireContext(), "Selecciona si el producto esta disponible o ya se vendio", Toast.LENGTH_SHORT).show()
+            return false
+        }
 
         return true
     }

@@ -3,6 +3,7 @@ package com.client.owls_emporium_app.network.api
 import com.client.owls_emporium_app.network.routes.CategoriesRoutes
 import com.client.owls_emporium_app.network.routes.ConditionRoutes
 import com.client.owls_emporium_app.network.routes.ProductsRoutes
+import com.client.owls_emporium_app.network.routes.StatementRoutes
 import com.client.owls_emporium_app.network.routes.SuggestRoutes
 import com.client.owls_emporium_app.network.routes.UsersRoutes
 //192.168.1.21
@@ -28,6 +29,9 @@ class ApiRoutes {
         return retrofit.getClientWithToken(API_URL, token).create(ConditionRoutes::class.java)
     }
 
+    fun getStatementRoutes(token: String): StatementRoutes {
+        return retrofit.getClientWithToken(API_URL, token).create(StatementRoutes::class.java)
+    }
 
     fun getProductsRoutes(token: String): ProductsRoutes {
         return retrofit.getClientWithToken(API_URL, token).create(ProductsRoutes::class.java)

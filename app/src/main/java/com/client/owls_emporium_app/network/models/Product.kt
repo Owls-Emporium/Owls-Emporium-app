@@ -13,6 +13,8 @@ class Product (
     @SerializedName("id_category") val idCategory: String,
     @SerializedName("id_status") val idStatus : String,
     @SerializedName("price") val price: Double,
+    @SerializedName("id_user") val idUser: String,
+    @SerializedName("id_statement") val idStatement: String,
     @SerializedName("quantity") val quantity: Int? = null
 
 
@@ -23,7 +25,7 @@ class Product (
     }
 
     override fun toString(): String {
-        return "Product(id='$id', name='$name', description='$description', image1='$image1', image2='$image2', image3='$image3', idCategory='$idCategory', idStatus= '$idStatus' price=$price, quantity=$quantity)"
+        return "Product(id='$id', name='$name', description='$description', image1='$image1', image2='$image2', image3='$image3', idCategory='$idCategory',idUser='$idUser',idStatement='$idStatement, idStatus= '$idStatus', price=$price, quantity=$quantity)"
     }
 
 }

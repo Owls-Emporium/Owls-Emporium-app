@@ -1,6 +1,5 @@
 package com.client.owls_emporium_app.network.routes
 
-import com.client.owls_emporium_app.network.models.Category
 import com.client.owls_emporium_app.network.models.Condition
 import com.client.owls_emporium_app.network.models.ResponseHttp
 import okhttp3.MultipartBody
