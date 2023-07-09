@@ -17,11 +17,9 @@ import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 class MainActivity : AppCompatActivity() {
 
     var btn_register: Button? = null
-    var btn_home: Button? = null
     var buttonLogin: Button ?= null
     //extrayendo datos del xml
     var inputEmail: EditText ?= null
@@ -34,9 +32,6 @@ class MainActivity : AppCompatActivity() {
         // go to register
         btn_register = findViewById(R.id.btn_register)
         btn_register?.setOnClickListener{ goToRegister() }
-        //go to home
-        btn_home = findViewById(R.id.btn_home)
-        btn_home?.setOnClickListener{ goToMainPage() }
         //for login
         inputEmail = findViewById(R.id.input_user)
         inputPassword = findViewById(R.id.input_pass)
@@ -50,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun login(){
         val email = inputEmail?.text.toString()
         val password = inputPassword?.text.toString()
-
+        //validando si los campos tienen datos
         if (isValidForm(email,password)){
             usersProvider.login(email,password)?.enqueue(object: Callback<ResponseHttp>{
                 override fun onResponse(
@@ -99,9 +94,7 @@ class MainActivity : AppCompatActivity() {
         }*/
     }
     //validar que sea un correo @gmail.com
-    fun String.isEmailValid(): Boolean{
-        return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
-    }
+
     //para cuando el usuario ya se aya logeado, lo envie a la home
     private fun getUserFromSession(){
 
@@ -124,11 +117,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"Ingresa la contraseña",Toast.LENGTH_SHORT).show()
             return false
         }
-        /*
-        if(email.isEmailValid()){
-            Toast.makeText(this,"EL correo ingresado no es valido, verificar",Toast.LENGTH_SHORT).show()
-            return false
-        }*/
         return true
     }
     private fun goToRegister() {
