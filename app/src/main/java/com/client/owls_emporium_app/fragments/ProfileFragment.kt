@@ -4,13 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import com.client.owls_emporium_app.R
 import com.bumptech.glide.Glide
 import com.client.owls_emporium_app.activities.MainActivity
+import com.client.owls_emporium_app.activities.SaveProductsActivity
 import com.client.owls_emporium_app.activities.UpdateProfileActivity
 import com.client.owls_emporium_app.network.models.User
 import com.client.owls_emporium_app.network.utils.SharedPref
@@ -19,7 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfileFragment : Fragment() {
 
-    var myview: View ?= null
+    var myview: View?= null
     var buttonUpdateProfile: Button ?= null
     var circleImageUser: CircleImageView?= null
     var textViewName: TextView?= null
@@ -29,12 +36,23 @@ class ProfileFragment : Fragment() {
     var sharedPref: SharedPref ?= null
     var user: User?= null
 
+    var toolbar: Toolbar? = null
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         myview = inflater.inflate(R.layout.fragment_profile, container, false)
+
+
+        setHasOptionsMenu(true)
+
+        toolbar = myview?.findViewById(R.id.toolbar)
+        toolbar?.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+        toolbar?.title = "Bienvenido a tu perfil"
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
 
         sharedPref = SharedPref(requireActivity())
         buttonUpdateProfile = myview?.findViewById(R.id.btn_update_profile)
@@ -58,6 +76,26 @@ class ProfileFragment : Fragment() {
         }
 
         return myview
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_products_favorites,menu)
+
+        super.onCreateOptionsMenu(menu, inflater)
+
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.item_shopping_bag){
+            goToSaveProducts()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun goToSaveProducts(){
+        val i = Intent(requireContext(), SaveProductsActivity::class.java)
+        startActivity(i)
     }
 
     private fun logout() {

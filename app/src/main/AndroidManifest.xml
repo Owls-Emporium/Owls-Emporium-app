@@ -25,6 +25,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.SaveProductsActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.UpdateProfileActivity"/>
+        <activity
             android:name=".activities.PostsCreatedActivity"
             android:exported="false" />
         <activity
