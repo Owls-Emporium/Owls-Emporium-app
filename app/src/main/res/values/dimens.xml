@@ -5,4 +5,7 @@
     <dimen name="Margin_start_50dp">50dp</dimen>
     <dimen name="Margin_top_50dp">50dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="size_text">24dp</dimen>
+    <dimen name="size_text_description">20dp</dimen>
+    <dimen name="size_text_title">28dp</dimen>
 </resources>
