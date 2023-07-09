@@ -28,6 +28,8 @@ class ProductsDetailActivity : AppCompatActivity() {
     var textViewPrice: TextView? = null
     var textViewCategory: TextView? = null
     var textViewStatus: TextView? = null
+    var textViewStatement: TextView? = null
+    var textViewUserName: TextView? = null
 
     var buttonAdd: Button? = null
 
@@ -48,6 +50,8 @@ class ProductsDetailActivity : AppCompatActivity() {
         textViewPrice = findViewById(R.id.textview_price)
         textViewCategory = findViewById(R.id.textview_category)
         textViewStatus = findViewById(R.id.textview_status)
+        textViewStatement = findViewById(R.id.textview_statement)
+        textViewUserName = findViewById(R.id.textview_username)
 
         buttonAdd = findViewById(R.id.btn_add_product)
         //arreglo de las imagenes para que se muestren
@@ -63,6 +67,8 @@ class ProductsDetailActivity : AppCompatActivity() {
         textViewPrice?.text = "$ ${product?.price}"
         textViewCategory?.text = product?.idCategory
         textViewStatus?.text = "Estado ${product?.idStatus}"
+        textViewUserName?.text = product?.idUser
+        textViewStatement?.text = product?.idStatement
 
         buttonAdd?.setOnClickListener { addToBag() }
 

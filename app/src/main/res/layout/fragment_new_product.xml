@@ -188,6 +188,14 @@
         app:layout_constraintStart_toStartOf="@+id/spinner_tags"
         app:layout_constraintTop_toBottomOf="@id/spinner_tags" />
 
+    <Spinner
+        android:id="@+id/spinner_statement"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_status"
+        app:layout_constraintStart_toStartOf="@+id/spinner_status"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_status" />
+
     <Button
         android:id="@+id/button_descartarPost"
         android:layout_width="125dp"

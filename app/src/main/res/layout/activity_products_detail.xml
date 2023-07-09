@@ -67,7 +67,26 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="15dp" />
-
+        <TextView
+            android:id="@+id/textview_statement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disponiblidad"
+            android:textSize="@dimen/size_text"
+            android:textColor="@color/black"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="15dp" />
+        <TextView
+            android:id="@+id/textview_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Creador de la publición"
+            android:textSize="@dimen/size_text"
+            android:textColor="@color/black"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="15dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

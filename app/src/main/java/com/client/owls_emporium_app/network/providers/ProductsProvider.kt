@@ -28,7 +28,7 @@ class ProductsProvider(val token: String) {
     }
 
 
-
+    //crear un nuevo producto
     fun create(files: List<File>, product: Product): Call<ResponseHttp>? {
 
         val images = arrayOfNulls<MultipartBody.Part>(files.size)
