@@ -44,18 +44,26 @@
             android:layout_marginTop="15dp" />
 
 
-        <TextView
-            android:id="@+id/textview_category"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Categoria"
-            android:textSize="@dimen/size_text"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="@color/Dark_blue_light"
+            app:cardCornerRadius="20dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/textview_category"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Categoria"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:background="@color/Dark_blue_light"/>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textview_status"
@@ -81,7 +89,7 @@
             android:id="@+id/textview_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Creador de la publición"
+            android:text="Creador de la publiciÃ³n"
             android:textSize="@dimen/size_text"
             android:textColor="@color/black"
             android:layout_marginStart="25dp"
