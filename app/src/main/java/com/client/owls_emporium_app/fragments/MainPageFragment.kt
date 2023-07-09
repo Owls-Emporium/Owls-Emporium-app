@@ -8,13 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.client.owls_emporium_app.R
 import com.client.owls_emporium_app.network.adapters.CategoriesAdapter
+import com.client.owls_emporium_app.network.adapters.ProductsAdapter
 import com.client.owls_emporium_app.network.models.Category
+import com.client.owls_emporium_app.network.models.Product
 import com.client.owls_emporium_app.network.models.User
 import com.client.owls_emporium_app.network.providers.CategoriesProviders
+import com.client.owls_emporium_app.network.providers.ProductsProvider
 import com.client.owls_emporium_app.network.utils.SharedPref
 import com.google.gson.Gson
 import retrofit2.Call
@@ -32,6 +34,15 @@ class MainPageFragment : Fragment() {
     var sharedPref: SharedPref? = null
     var categories = ArrayList<Category>()
 
+    //NUEVOS
+    var recyclerViewProducts: RecyclerView? = null
+    var adapters: ProductsAdapter? = null
+    var productsProvider: ProductsProvider? = null
+    var products: ArrayList<Product> = ArrayList()
+
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +58,15 @@ class MainPageFragment : Fragment() {
 
         categoriesProvider = CategoriesProviders(user?.sessionToken!!)
 
+
+        productsProvider = ProductsProvider(user?.sessionToken!!)
+
+        recyclerViewProducts = myView?.findViewById(R.id.recyclerview_products_suggest)
+        recyclerViewProducts?.layoutManager =  LinearLayoutManager(requireContext(),)
+
         getCategories()
+        getProducts()
+
 
         return myView
     }
@@ -64,6 +83,28 @@ class MainPageFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ArrayList<Category>>, t: Throwable) {
+                Log.d(TAG, " Error: ${t.message}")
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
+    private fun getProducts(){
+        productsProvider?.getAll()?.enqueue(object:
+            Callback<ArrayList<Product>> {
+            override fun onResponse(
+                call: Call<ArrayList<Product>>,
+                response: Response<ArrayList<Product>>
+            ) {
+                if (response.body() != null){
+                    products = response.body()!!
+                    adapters = ProductsAdapter(requireActivity(), products)
+                    recyclerViewProducts?.adapter = adapters
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<Product>>, t: Throwable) {
                 Log.d(TAG, " Error: ${t.message}")
                 Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_LONG).show()
             }

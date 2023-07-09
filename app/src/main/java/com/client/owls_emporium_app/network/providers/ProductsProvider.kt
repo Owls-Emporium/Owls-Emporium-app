@@ -23,6 +23,11 @@ class ProductsProvider(val token: String) {
         return productsRoutes?.findByCategory(idCategory,token)
     }
 
+    fun getAll(): Call<ArrayList<Product>>? {
+        return productsRoutes?.getAll(token)
+    }
+
+
 
     fun create(files: List<File>, product: Product): Call<ResponseHttp>? {
 
@@ -36,5 +41,7 @@ class ProductsProvider(val token: String) {
         val requestBody = RequestBody.create(MediaType.parse("text/plain"), product.toJson())
         return productsRoutes?.create(images, requestBody, token)
     }
+
+
 
 }
