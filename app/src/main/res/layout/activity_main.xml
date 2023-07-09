@@ -111,22 +111,6 @@
         app:layout_constraintStart_toStartOf="@+id/textField_pass"
         app:layout_constraintTop_toBottomOf="@id/textField_pass" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btn_home"
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="@color/white"
-        android:text="pagina principal"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/Dark_blue"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/textField_pass"
-        app:layout_constraintStart_toStartOf="@+id/textField_pass"
-        app:layout_constraintTop_toBottomOf="@id/btn_login" />
-
     <TextView
         android:id="@+id/tv_registrarse"
         android:layout_width="wrap_content"
