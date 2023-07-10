@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="@dimen/Margin_top_50dp"
-        android:text="@string/tittle_sign_in"
+        android:text="Iniciar sesión"
         android:textColor="@color/Dark_blue_light"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -59,7 +59,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_user"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -93,7 +93,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_pass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:inputType="textPassword"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
@@ -101,9 +101,11 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btn_login"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         android:backgroundTint="@color/Dark_blue_light"
         android:text="@string/Button_sign_in"
         android:textAlignment="center"
@@ -111,8 +113,8 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textField_pass"
+        app:layout_constraintEnd_toEndOf="@id/textField_pass"
         app:layout_constraintTop_toBottomOf="@id/textField_pass" />
 
     <TextView

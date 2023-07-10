@@ -247,7 +247,9 @@ class NewProductFragment : Fragment() {
                 idCategory = idCategory,
                 idStatus = idStatus,
                 idStatement = idStatement,
-                idUser = user?.id!!
+                idUser = user?.id!!,
+                imgUser = user?.id!!,
+                phoneUser = user?.id!!
             )
 
             files.add(imageFile1!!)

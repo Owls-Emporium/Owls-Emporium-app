@@ -18,7 +18,6 @@ class SaveProductsActivity : AppCompatActivity() {
 
     var recyclerViewSaveProducts: RecyclerView? = null
     var toolbar: Toolbar? = null
-
     var adapter: SaveProductsAdapter? = null
     var sharedPref: SharedPref? = null
     var gson = Gson()
