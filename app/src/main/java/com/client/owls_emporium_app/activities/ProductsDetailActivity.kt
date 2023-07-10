@@ -3,10 +3,15 @@ package com.client.owls_emporium_app.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.ImageView.ScaleType
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import com.client.owls_emporium_app.R
 import com.client.owls_emporium_app.network.models.Product
 import com.client.owls_emporium_app.network.utils.SharedPref
@@ -15,6 +20,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import de.hdodenhof.circleimageview.CircleImageView
 
 class ProductsDetailActivity : AppCompatActivity() {
 
@@ -30,11 +36,13 @@ class ProductsDetailActivity : AppCompatActivity() {
     var textViewStatus: TextView? = null
     var textViewStatement: TextView? = null
     var textViewUserName: TextView? = null
-
+    var circleImagUser: ImageSlider? = null
+    var phoneUser: TextView? = null
     var buttonAdd: Button? = null
-
     var sharedPref: SharedPref? = null
     var selectedProducts = ArrayList<Product>()
+
+    var toolbar: Toolbar? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +60,7 @@ class ProductsDetailActivity : AppCompatActivity() {
         textViewStatus = findViewById(R.id.textview_status)
         textViewStatement = findViewById(R.id.textview_statement)
         textViewUserName = findViewById(R.id.textview_username)
+//        circleImagUser = findViewById(R.id.circleimg_user)
 
         buttonAdd = findViewById(R.id.btn_add_product)
         //arreglo de las imagenes para que se muestren
@@ -61,6 +70,17 @@ class ProductsDetailActivity : AppCompatActivity() {
         imageList.add(SlideModel(product?.image3, ScaleTypes.CENTER_CROP))
 
         imageSlider?.setImageList(imageList)
+
+        val imageUser = ArrayList<SlideModel>()
+        imageUser.add(SlideModel(product?.imgUser, ScaleTypes.CENTER_CROP))
+
+        circleImagUser?.setImageList(imageUser)
+
+        toolbar = findViewById(R.id.toolbar)
+        toolbar?.title = "Atras"
+        toolbar?.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         textViewName?.text = product?.name
         textViewDescription?.text = product?.description
@@ -86,9 +106,6 @@ class ProductsDetailActivity : AppCompatActivity() {
 
         sharedPref?.save("order", selectedProducts)
         Toast.makeText(this, "Producto añadido a favoritos, puedes verlos en tu perfil", Toast.LENGTH_LONG).show()
-
-
-
 
     }
 

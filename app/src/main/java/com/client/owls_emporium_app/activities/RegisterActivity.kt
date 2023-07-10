@@ -20,7 +20,6 @@ import retrofit2.Response
 class RegisterActivity : AppCompatActivity() {
 
     val TAG = "RegisterActivity"
-
     var btn_login: Button? = null
     var inputName: EditText?= null
     var inputLastname: EditText?= null

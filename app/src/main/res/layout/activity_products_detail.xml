@@ -4,52 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_layout"
+    android:background="@color/white"
     tools:context=".activities.ProductsDetailActivity">
 
+    <include layout="@layout/action_bar" />
+
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/imageslider"
+            android:layout_marginTop="45dp"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="220dp"
             app:iss_auto_cycle="true"
             app:iss_period="5000"
             app:iss_delay="0"/>
 
         <TextView
             android:id="@+id/textview_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre del producto:"
             android:textStyle="bold"
-            android:textSize="@dimen/size_text_title"
+            android:textSize="24sp"
             android:textColor="@color/black"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="15dp"/>
+    </LinearLayout>
 
         <TextView
             android:id="@+id/textview_price"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Precio"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/linear"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="15dp" />
+
+    <!--<com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/circleimg_user"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:civ_border_color="@color/Dark_blue"
+        app:civ_border_width="3dp"
+        android:src="@drawable/ic_image"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="200dp"
+        app:layout_constraintTop_toBottomOf="@+id/linear"
+        />-->
+
+    <TextView
+            android:id="@+id/textview_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User"
             android:textSize="@dimen/size_text"
             android:textColor="@color/black"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="150dp"
+            app:layout_constraintTop_toBottomOf="@+id/linear"
+            app:layout_constraintStart_toStartOf="@+id/textview_price"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="15dp" />
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
+            app:layout_constraintTop_toBottomOf="@+id/textview_price"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="15dp">
 
             <TextView
@@ -57,52 +94,95 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Categoria"
-                android:textSize="24dp"
+                android:textSize="14sp"
+                android:paddingStart="40dp"
+                android:layout_gravity="center_vertical"
                 android:textStyle="bold"
-                android:padding="10dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
                 android:textColor="@color/white"
                 android:background="@color/Dark_blue_light"/>
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/outline_label_24"
+                />
+
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/textview_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estado"
-            android:textSize="@dimen/size_text"
-            android:textColor="@color/black"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginTop="15dp" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_details"
+        android:layout_marginTop="15dp">
+
         <TextView
             android:id="@+id/textview_statement"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Estado"
+            android:textSize="14sp"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:background="@color/Green"/>
+
+    </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textview_details"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Disponiblidad"
-            android:textSize="@dimen/size_text"
+            android:text="Estado -"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cat"/>
+
+
         <TextView
-            android:id="@+id/textview_username"
-            android:layout_width="match_parent"
+            android:id="@+id/textview_status"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Creador de la publiciÃ³n"
-            android:textSize="@dimen/size_text"
+            android:text="Estado"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20sp"
             android:textColor="@color/black"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="50dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/cat" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/textview_title_description"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descripcion:"
-            android:textSize="@dimen/size_text"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginStart="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/available"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="15dp"/>
 
@@ -113,25 +193,31 @@
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         "
-            android:textSize="@dimen/size_text_description"
+            android:textSize="18sp"
             android:textColor="@color/black"
             android:maxLength="255"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
+            app:layout_constraintTop_toBottomOf="@+id/textview_title_description"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="15dp"/>
 
-        <Button
-            android:id="@+id/btn_add_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar producto"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginTop="70dp"
-            android:backgroundTint="@color/Dark_blue_light"
-            android:textColor="@color/white"/>
-    </LinearLayout>
-
+    <FrameLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/textview_category"
+        app:layout_constraintTop_toBottomOf="@id/textview_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        android:layout_marginEnd="20dp">
+        <Button android:id="@+id/btn_add_product"
+            android:layout_width="50dp"
+            android:backgroundTint="@color/white"
+            android:layout_height="50dp" />
+        <ImageView android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/outline_bookmark_border_24"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,10 @@ package com.client.owls_emporium_app.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.client.owls_emporium_app.R
@@ -20,25 +23,37 @@ import retrofit2.Response
 class ProductsListActivity : AppCompatActivity() {
 
     val TAG = "ProductsList"
+    val gson = Gson()
     var recyclerViewProducts: RecyclerView? = null
+    var product: Product? = null
     var adapter: ProductsAdapter? = null
 
     var user: User? = null
     var sharedPref: SharedPref? = null
+    var textViewCategory: TextView? = null
 
     var productsProvider: ProductsProvider? = null
     var products: ArrayList<Product> = ArrayList()
 
     var idCategory: String? = null
+    var toolbar: Toolbar? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_products_list)
 
+        product = gson.fromJson(intent.getStringExtra("product"), Product::class.java)
         sharedPref = SharedPref(this)
 
+        toolbar = findViewById(R.id.toolbar)
+        toolbar?.title = "Atras"
+        toolbar?.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         idCategory = intent.getStringExtra("idCategory")
+        textViewCategory?.text = product?.idCategory
         getUserFromSession()
 
 

@@ -33,14 +33,18 @@
             android:exported="false" />
         <activity
             android:name=".activities.ProductsDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.ProductsDetailActivity"
+            />
         <activity
             android:name=".activities.ProductsListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.ProductsDetailActivity"/>
         <activity
             android:name=".activities.UpdateProfileActivity"
             android:exported="false"
             android:parentActivityName=".activities.UpdateProfileActivity" />
+
 
         <activity
             android:name=".activities.MainPageActivity"

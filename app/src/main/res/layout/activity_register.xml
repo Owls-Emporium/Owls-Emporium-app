@@ -7,30 +7,19 @@
     android:background="@color/white"
     tools:context=".activities.RegisterActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tittle_sign_up"/>
-
     <TextView
         android:id="@+id/tittle_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:text="@string/Register_title"
         android:textColor="@color/Dark_blue_light"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/textField_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField_name"
@@ -38,8 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="210dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="185dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Nombre"
         android:textColorHint="@color/Dark_blue"
@@ -59,7 +48,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,8 +58,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="210dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="185dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/Dark_blue"
@@ -92,7 +81,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_lastname"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -125,7 +114,7 @@
             android:id="@+id/input_email"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -158,7 +147,7 @@
             android:id="@+id/input_phone"
             android:inputType="phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -192,7 +181,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_pass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:inputType="textPassword"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
@@ -227,7 +216,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_confirm_pass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:inputType="textPassword"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
@@ -235,8 +224,8 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/register_button"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/Dark_blue_light"
         android:text="Registrarse"
@@ -277,7 +266,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         android:background="@drawable/wave"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -11,7 +11,7 @@
         android:id="@+id/textView_creat_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:text="Crear Publicación"
         android:textColor="@color/Dark_blue_light"
@@ -24,28 +24,28 @@
         android:id="@+id/select_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/textView_creat_post">
 
         <ImageView
             android:id="@+id/imageview_1"
             android:layout_width="110dp"
-            android:layout_height="130dp"
+            android:layout_height="100dp"
             android:src="@drawable/ic_image"
             app:layout_constraintTop_toBottomOf="@+id/textView_creat_post" />
 
         <ImageView
             android:id="@+id/imageview_2"
             android:layout_width="110dp"
-            android:layout_height="130dp"
+            android:layout_height="100dp"
             android:src="@drawable/ic_image"
             app:layout_constraintTop_toBottomOf="@+id/textView_creat_post" />
 
         <ImageView
             android:id="@+id/imageview_3"
             android:layout_width="110dp"
-            android:layout_height="130dp"
+            android:layout_height="100dp"
             android:src="@drawable/ic_image"
             app:layout_constraintTop_toBottomOf="@+id/textView_creat_post" />
     </LinearLayout>
@@ -53,15 +53,14 @@
     <TextView
         android:id="@+id/tittle_add_image"
         android:layout_width="312dp"
+        android:textAlignment="center"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:text="Elige fotos que visualice el producto a vender perfectamente"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:text="Elige fotos que visualice el producto a vender perfectamente."
         android:textColor="@color/Dark_blue_light"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_img" />
 
@@ -70,9 +69,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Titulo"
         android:textColorHint="@color/Dark_blue"
@@ -89,9 +88,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_title"
-            android:inputType="text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:inputType="text"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -100,14 +99,13 @@
         android:id="@+id/tittle_create_title"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:text="Ponle un titulo que sea llamativo para tu publicación"
+        android:textAlignment="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:text="Ponle un titulo que sea llamativo para tu publicación."
         android:textColor="@color/Dark_blue_light"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textField_title" />
 
@@ -116,9 +114,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Descripción"
         android:textColorHint="@color/Dark_blue"
@@ -135,8 +133,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_description"
             android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:inputType="text"
-            android:layout_height="wrap_content"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -146,9 +144,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/Dark_blue"
         android:hint="Precio"
         android:textColorHint="@color/Dark_blue"
@@ -163,9 +161,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_price"
-            android:inputType="phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:inputType="phone"
             android:textColor="@color/Dark_blue"
             android:textColorHint="@color/Dark_blue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -173,10 +171,10 @@
     <Spinner
         android:id="@+id/spinner_tags"
         android:layout_width="310dp"
-        android:backgroundTint="@color/Dark_blue_light"
-        android:popupBackground="@color/Dark_blue_light"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/Dark_blue_light"
+        android:popupBackground="@color/Dark_blue_light"
         app:layout_constraintEnd_toEndOf="@+id/textField_price"
         app:layout_constraintStart_toStartOf="@+id/textField_price"
         app:layout_constraintTop_toBottomOf="@id/textField_price" />
@@ -185,9 +183,9 @@
         android:id="@+id/spinner_status"
         android:layout_width="310dp"
         android:layout_height="50dp"
-        android:popupBackground="@color/Dark_blue_light"
-        android:backgroundTint="@color/Dark_blue_light"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/Dark_blue_light"
+        android:popupBackground="@color/Dark_blue_light"
         app:layout_constraintEnd_toEndOf="@+id/spinner_tags"
         app:layout_constraintStart_toStartOf="@+id/spinner_tags"
         app:layout_constraintTop_toBottomOf="@id/spinner_tags" />
@@ -204,15 +202,15 @@
 
     <Button
         android:id="@+id/button_descartarPost"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="76dp"
         android:backgroundTint="@color/Dark_blue_light"
         android:text="Descartar"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:textStyle="bold"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -221,15 +219,15 @@
 
     <Button
         android:id="@+id/btn_publicarPost"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="76dp"
         android:backgroundTint="@color/Dark_blue_light"
         android:text="Publicar"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:textStyle="bold"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
