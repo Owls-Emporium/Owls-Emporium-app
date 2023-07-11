@@ -30,7 +30,7 @@ class ProductsListActivity : AppCompatActivity() {
 
     var user: User? = null
     var sharedPref: SharedPref? = null
-    var textViewCategory: TextView? = null
+    var textview_category_list: TextView? = null
 
     var productsProvider: ProductsProvider? = null
     var products: ArrayList<Product> = ArrayList()
@@ -46,19 +46,21 @@ class ProductsListActivity : AppCompatActivity() {
         product = gson.fromJson(intent.getStringExtra("product"), Product::class.java)
         sharedPref = SharedPref(this)
 
+
+
         toolbar = findViewById(R.id.toolbar)
         toolbar?.title = "Atras"
         toolbar?.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        idCategory = intent.getStringExtra("idCategory")
-        textViewCategory?.text = product?.idCategory
+
         getUserFromSession()
 
-
+        idCategory = intent.getStringExtra("idCategory")
+        textview_category_list?.text = product?.idCategory
         productsProvider = ProductsProvider(user?.sessionToken!!)
-
+        textview_category_list = findViewById(R.id.textview_category_list)
         recyclerViewProducts = findViewById(R.id.recyclerview_products_new)
         recyclerViewProducts?.layoutManager = GridLayoutManager(this,2)
 

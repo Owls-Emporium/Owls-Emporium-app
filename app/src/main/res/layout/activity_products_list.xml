@@ -10,7 +10,7 @@
     <include layout="@layout/action_bar" />
 
     <TextView
-        android:id="@+id/textview_category"
+        android:id="@+id/textview_category_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Categoria"
