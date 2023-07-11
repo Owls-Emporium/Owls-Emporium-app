@@ -86,7 +86,7 @@ class ProductsDetailActivity : AppCompatActivity() {
         textViewDescription?.text = product?.description
         textViewPrice?.text = "$ ${product?.price}"
         textViewCategory?.text = product?.idCategory
-        textViewStatus?.text = "Estado ${product?.idStatus}"
+        textViewStatus?.text = "${product?.idStatus}"
         textViewUserName?.text = product?.idUser
         textViewStatement?.text = product?.idStatement
 
